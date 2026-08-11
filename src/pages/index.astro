@@ -8,11 +8,13 @@ const posts = (await getCollection('blog', ({ data }) => !data.draft)).sort((a, 
 <BaseLayout description={description}>
   <div class="shell">
     <section class="hero">
-      <h1>Samuel Sorial</h1>
+      <div class="eyebrow"><span class="status-dot"></span> Software engineer · Montréal</div>
+      <h1>Notes on building<br /><span>reliable systems.</span></h1>
       <p>A software engineer who is enthusiastic about back-end engineering and system design. I love to write about the new concepts that I learn. I use this blog as personal technical notes.</p>
+      <div class="hero-topics" aria-label="Topics"><span>distributed systems</span><span>databases</span><span>backend engineering</span></div>
     </section>
     <section aria-labelledby="latest-heading">
-      <h2 class="section-title" id="latest-heading">Latest articles</h2>
+      <div class="section-heading"><div><span class="section-kicker">Writing</span><h2 class="section-title" id="latest-heading">Latest articles</h2></div><span>{posts.length} published notes</span></div>
       <div class="post-list">{posts.slice(0, 10).map((post) => <PostCard post={post} />)}</div>
       <a class="all-posts" href="/archive">View all {posts.length} articles →</a>
     </section>

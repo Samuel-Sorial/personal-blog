@@ -5,9 +5,13 @@ const { post } = Astro.props;
 const date = post.data.publishDate.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric', timeZone: 'UTC' });
 ---
 <article class="post-card">
-  <div>
+  <div class="post-card-body">
+    <div class="post-card-topline">
+      <time datetime={post.data.publishDate.toISOString()}>{date}</time>
+      {post.data.tags[0] && <span>{post.data.tags[0]}</span>}
+    </div>
     <h2><a href={`/${post.id}`}>{post.data.title}</a></h2>
     <p>{post.data.description}</p>
-    <div class="meta"><time datetime={post.data.publishDate.toISOString()}>{date}</time></div>
+    <a class="read-link" href={`/${post.id}`} aria-label={`Read ${post.data.title}`}>Read article <span aria-hidden="true">→</span></a>
   </div>
 </article>
