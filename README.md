@@ -48,18 +48,20 @@ Optional fields are `updatedDate`, `canonicalUrl`, and `heroImage`. Images may b
 - `src/pages/`: generated pages, post routes, tags, and RSS
 - `src/styles/`: global responsive styles and article typography
 - `public/images/posts/`: migrated article images
-- `public/_redirects`: Cloudflare Pages redirects
+- `wrangler.jsonc`: Cloudflare Workers Static Assets deployment configuration
+- `public/_redirects`: retained for compatibility with classic Cloudflare Pages deployments
 
-## Deploy to Cloudflare Pages
+## Deploy to Cloudflare
+
+Cloudflare's current dashboard routes new Git-connected Astro sites through Workers Builds with Static Assets. This project contains no Worker entry point or runtime code; Wrangler uploads the pre-rendered `dist` directory as static assets.
 
 1. Push the repository to GitHub.
-2. In Cloudflare Dashboard, open **Workers & Pages**, choose **Create application → Pages → Connect to Git**, and authorize/select the repository.
-3. Select the production branch (usually `main`). Choose the **Astro** framework preset if offered.
-4. Set the build command to `npm run build` and the build output directory to `dist`. No environment variables are required.
-5. Save and deploy. Every production-branch push creates a production deployment; pull requests and non-production branches receive isolated preview deployments and URLs.
-6. Under the Pages project, open **Custom domains → Set up a custom domain**. Enter the desired domain. If DNS is already on Cloudflare, Cloudflare creates the required record. If the registrar or authoritative DNS is elsewhere, follow the shown target and create the requested CNAME (commonly pointing a subdomain to `<project>.pages.dev`); apex-domain instructions can differ, so use the exact values Cloudflare displays.
-7. DNS delegation to Cloudflare is not required merely because Pages hosts the site. Keep the domain at any registrar and add the records at its active DNS provider.
-8. Cloudflare provisions and renews HTTPS automatically after DNS validation. Certificate issuance can take a short time after the records resolve.
+2. In Cloudflare Dashboard, open **Workers & Pages**, choose **Create application → Import a repository**, and select `Samuel-Sorial/personal-blog`.
+3. Use project name `personal-blog`, build command `npm run build`, and deploy command `npx wrangler deploy`. Leave the root directory empty and add no environment variables.
+4. Keep builds for non-production branches enabled if preview deployments are desired, then select **Deploy**.
+5. Every production-branch push creates a production deployment; non-production branches receive preview deployments.
+6. In the deployed application, open **Settings → Domains & Routes → Add → Custom Domain**, enter `samuelsorial.com`, and confirm. Remove that hostname from the old Hello World Worker first.
+7. Cloudflare provisions and renews HTTPS automatically after domain validation.
 
 The production URL is configured as `https://samuelsorial.com` in `astro.config.ts`, the post `canonicalUrl` fields, and `public/robots.txt`. The former `hashnode.dev` hostname is owned and DNS-controlled by Hashnode, so preserving redirects from it depends on the migration options Hashnode provides.
 

@@ -6,12 +6,16 @@
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
-    "preview": "astro preview"
+    "preview": "astro preview",
+    "deploy": "npm run build && wrangler deploy"
   },
   "dependencies": {
     "@astrojs/rss": "latest",
     "@astrojs/sitemap": "latest",
     "astro": "latest"
   },
-  "devDependencies": { "typescript": "latest" }
+  "devDependencies": {
+    "typescript": "latest",
+    "wrangler": "latest"
+  }
 }
