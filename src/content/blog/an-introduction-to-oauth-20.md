@@ -4,7 +4,7 @@ description: "First of all, why does it exist?\nOAuth 2.0 was created to make a 
 publishDate: 2021-01-04T03:25:29.000Z
 tags: ["oauth","authentication","Auth","authorization","APIs"]
 draft: false
-canonicalUrl: "https://samuel-sorial.hashnode.dev/an-introduction-to-oauth-20"
+canonicalUrl: "https://samuelsorial.com/an-introduction-to-oauth-20"
 ---
 <h3 id="first-of-all-why-does-it-exist">First of all, why does it exist?</h3>
 <p>OAuth 2.0 was created to make a standard way - protocol - for making users <strong>delegate access</strong> to their resources in a specific application to another application. This is widely used today, whenever you login into an application using Facebook login or Google login, you are using this protocol. </p>

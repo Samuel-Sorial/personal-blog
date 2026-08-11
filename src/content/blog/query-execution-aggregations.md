@@ -4,7 +4,7 @@ description: "Introduction\nOnce the query planner has determined the optimal pl
 publishDate: 2022-12-26T19:25:06.000Z
 tags: ["query-execution","disk-oriented-algorithms","Databases","sorting","Hashing"]
 draft: false
-canonicalUrl: "https://samuel-sorial.hashnode.dev/query-execution-aggregations"
+canonicalUrl: "https://samuelsorial.com/query-execution-aggregations"
 ---
 <h1 id="heading-introduction">Introduction</h1>
 <p>Once the query planner has determined the optimal plan for executing a query, it's time to implement that plan. But before we can do that, it's important to understand the algorithms used to execute the various operations in the plan.</p>

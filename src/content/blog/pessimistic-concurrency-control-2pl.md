@@ -4,7 +4,7 @@ description: "Introduction\nIn today's high-traffic database management systems 
 publishDate: 2023-02-08T13:22:51.000Z
 tags: ["concurrency","locking","Databases","two-phase-locking","concurrency-control"]
 draft: false
-canonicalUrl: "https://samuel-sorial.hashnode.dev/pessimistic-concurrency-control-2pl"
+canonicalUrl: "https://samuelsorial.com/pessimistic-concurrency-control-2pl"
 ---
 <h1 id="heading-introduction">Introduction</h1>
 <p>In today's high-traffic database management systems (DBMS), leveraging the full potential of hardware is essential. With the advent of modern CPUs, the opportunity for parallel processing has increased significantly. However, executing multiple transactions simultaneously can result in data inconsistencies without proper concurrency control. This is why implementing effective concurrency control is crucial in ensuring the accuracy and reliability of data in a multi-user environment.</p>

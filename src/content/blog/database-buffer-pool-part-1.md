@@ -4,7 +4,7 @@ description: "Introduction\nIn order to allow the database execution engine to p
 publishDate: 2022-10-25T00:15:11.000Z
 tags: ["buffer-pool","Databases","database","memory-management","caching"]
 draft: false
-canonicalUrl: "https://samuel-sorial.hashnode.dev/database-buffer-pool-part-1"
+canonicalUrl: "https://samuelsorial.com/database-buffer-pool-part-1"
 ---
 <h2 id="heading-introduction">Introduction</h2>
 <p>In order to allow the database execution engine to perform its operations, it needs the pages containing the table records to be brought from disk to memory. However, we want to optimize I/O operations, so there is a subsystem of the database that handles this part, which is called <strong>Buffer Pool</strong>.</p>

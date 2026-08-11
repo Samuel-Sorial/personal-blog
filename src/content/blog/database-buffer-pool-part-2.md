@@ -4,7 +4,7 @@ description: "Introduction\nAs explained in Database Buffer Pool - Part 1, a buf
 publishDate: 2022-10-27T21:00:42.000Z
 tags: ["database","caching","memory-management","LRU Cache","Databases"]
 draft: false
-canonicalUrl: "https://samuel-sorial.hashnode.dev/database-buffer-pool-part-2"
+canonicalUrl: "https://samuelsorial.com/database-buffer-pool-part-2"
 ---
 <h2 id="heading-introduction">Introduction</h2>
 <p>As explained in <a target="_blank" href="https://samuelsorial.tech/database-buffer-pool-part-1">Database Buffer Pool - Part 1</a>, a buffer pool is a limited chunk of memory, which means that whenever we bring something from the disk, we need to evict something from the buffer pool and replace it. Buffer replacement is one of the most important topics for memory management in DBMS.</p>

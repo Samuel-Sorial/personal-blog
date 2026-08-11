@@ -61,7 +61,7 @@ Optional fields are `updatedDate`, `canonicalUrl`, and `heroImage`. Images may b
 7. DNS delegation to Cloudflare is not required merely because Pages hosts the site. Keep the domain at any registrar and add the records at its active DNS provider.
 8. Cloudflare provisions and renews HTTPS automatically after DNS validation. Certificate issuance can take a short time after the records resolve.
 
-Before deployment, replace `https://samuel-sorial.hashnode.dev` in `astro.config.ts`, post `canonicalUrl` fields, and `public/robots.txt` with the final Pages custom domain. The `hashnode.dev` hostname is owned and DNS-controlled by Hashnode, so it cannot be attached directly to Cloudflare Pages. Use a domain you control (or the generated `pages.dev` hostname), then configure a Hashnode-supported redirect or canonical migration option if available.
+The production URL is configured as `https://samuelsorial.com` in `astro.config.ts`, the post `canonicalUrl` fields, and `public/robots.txt`. The former `hashnode.dev` hostname is owned and DNS-controlled by Hashnode, so preserving redirects from it depends on the migration options Hashnode provides.
 
 ## Migration notes
 

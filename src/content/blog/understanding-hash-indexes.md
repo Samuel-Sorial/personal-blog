@@ -4,7 +4,7 @@ description: "Why database indexes?\nWhen it comes to querying databases, one of
 publishDate: 2022-12-11T18:37:28.000Z
 tags: ["hashing-schemes","Databases","#databaseindexes","Hashing"]
 draft: false
-canonicalUrl: "https://samuel-sorial.hashnode.dev/understanding-hash-indexes"
+canonicalUrl: "https://samuelsorial.com/understanding-hash-indexes"
 ---
 <h1 id="heading-why-database-indexes">Why database indexes?</h1>
 <p>When it comes to querying databases, one of the most time-consuming and performance-intensive operations is to do a linear scan of the entire table. This requires the database management system (DBMS) to retrieve all of the pages from the disk (which is a slow and expensive operation) and then scan through them one by one to find the specific data that is being queried. In large databases with millions or billions of records, this can be a major bottleneck and can cause queries to take a long time to complete.</p>

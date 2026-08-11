@@ -4,7 +4,7 @@ description: "Introduction\nJoins are used to combine data from multiple tables 
 publishDate: 2022-12-29T14:29:50.000Z
 tags: ["Databases","query-execution","joins"]
 draft: false
-canonicalUrl: "https://samuel-sorial.hashnode.dev/query-execution-joins"
+canonicalUrl: "https://samuelsorial.com/query-execution-joins"
 ---
 <h1 id="heading-introduction">Introduction</h1>
 <p>Joins are used to combine data from multiple tables in a database and retrieve the combined data as a single result set. This allows us to effectively retrieve data that is spread across multiple tables and can be especially useful when working with large datasets. In this article, we will discuss how DBMS executes those joins.</p>

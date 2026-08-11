@@ -4,7 +4,7 @@ description: "Threads Implementation\n\nKernel Threads\nKernel threads are the s
 publishDate: 2020-12-31T01:41:40.000Z
 tags: ["multithreading","concurrency","operating system"]
 draft: false
-canonicalUrl: "https://samuel-sorial.hashnode.dev/thread-implementation-and-modeling"
+canonicalUrl: "https://samuelsorial.com/thread-implementation-and-modeling"
 ---
 <h2 id="heading-threads-implementation">Threads Implementation</h2>
 <ul>

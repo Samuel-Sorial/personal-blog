@@ -4,7 +4,7 @@ description: "Introduction\nDifferent applications have different requirements, 
 publishDate: 2022-10-16T00:00:32.000Z
 tags: ["Databases","database","database design","OLTP","OLAP"]
 draft: false
-canonicalUrl: "https://samuel-sorial.hashnode.dev/storage-models-for-databases"
+canonicalUrl: "https://samuelsorial.com/storage-models-for-databases"
 ---
 <h2 id="heading-introduction">Introduction</h2>
 <p>Different applications have different requirements, as discussed in <a target="_blank" href="https://samuelsorial.tech/what-the-heck-is-oltp-olap">What the heck is OLTP, OLAP?</a>, it depends on business rules to define the workload of our database. Therefore, we need different storage models for the database in order to fulfill those workloads while maximizing the utilization of I/O and storage.</p>

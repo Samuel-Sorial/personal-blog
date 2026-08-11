@@ -4,7 +4,7 @@ description: "In some situations where failure is caused by a hardware failure, 
 publishDate: 2023-06-21T12:14:36.000Z
 tags: ["distributed system","virtual machine","vsphere","vmotion","General Programming"]
 draft: false
-canonicalUrl: "https://samuel-sorial.hashnode.dev/design-of-fault-tolerant-virtual-machines"
+canonicalUrl: "https://samuelsorial.com/design-of-fault-tolerant-virtual-machines"
 ---
 <p>In some situations where failure is caused by a hardware failure, it's useful to have replication in hand. There are other types of failures that can't be resolved with replication, such as software bugs or network issues. In this article, we deal with hardware failure in order to build fault-tolerant virtual machines. Discussing how VMware built their vSphere to make their virtual machines fault-tolerant.</p>
 <h2 id="heading-replication-schemes">Replication Schemes</h2>

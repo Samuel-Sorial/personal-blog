@@ -4,7 +4,7 @@ description: "Introduction\nSQL is a declarative language, which means that when
 publishDate: 2023-01-16T15:12:56.000Z
 tags: ["Databases","query tuning","query-optimization"]
 draft: false
-canonicalUrl: "https://samuel-sorial.hashnode.dev/query-optimization"
+canonicalUrl: "https://samuelsorial.com/query-optimization"
 ---
 <h1 id="heading-introduction">Introduction</h1>
 <p>SQL is a declarative language, which means that when you request a query, you specify the data you want, but not how to get it. The database management system (DBMS) is responsible for determining the most efficient way to retrieve the requested data. This separation of concerns allows users to focus on what data they need, while the DBMS can optimize the underlying operations for efficiency and performance.</p>

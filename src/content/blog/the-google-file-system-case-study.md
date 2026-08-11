@@ -4,7 +4,7 @@ description: "Introduction\nThe Google file system's main goal is to support the
 publishDate: 2023-05-12T02:30:51.000Z
 tags: ["distributed system","Gfs","file system","General Programming"]
 draft: false
-canonicalUrl: "https://samuel-sorial.hashnode.dev/the-google-file-system-case-study"
+canonicalUrl: "https://samuelsorial.com/the-google-file-system-case-study"
 ---
 <h1 id="heading-introduction">Introduction</h1>
 <p>The Google file system's main goal is to support their applications' workload. Which affected their design decisions, they implemented what they actually need, rather than the de-facto distributed file system.</p>
