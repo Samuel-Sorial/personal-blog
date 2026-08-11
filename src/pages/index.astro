@@ -1,0 +1,20 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PostCard from '../components/PostCard.astro';
+const description = 'A software engineer who is enthusiastic about back-end engineering and system design. Personal technical notes by Samuel Sorial.';
+const posts = (await getCollection('blog', ({ data }) => !data.draft)).sort((a, b) => b.data.publishDate.valueOf() - a.data.publishDate.valueOf());
+---
+<BaseLayout description={description}>
+  <div class="shell">
+    <section class="hero">
+      <h1>Samuel Sorial</h1>
+      <p>A software engineer who is enthusiastic about back-end engineering and system design. I love to write about the new concepts that I learn. I use this blog as personal technical notes.</p>
+    </section>
+    <section aria-labelledby="latest-heading">
+      <h2 class="section-title" id="latest-heading">Latest articles</h2>
+      <div class="post-list">{posts.slice(0, 10).map((post) => <PostCard post={post} />)}</div>
+      <a class="all-posts" href="/archive">View all {posts.length} articles →</a>
+    </section>
+  </div>
+</BaseLayout>

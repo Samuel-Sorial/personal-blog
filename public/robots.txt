@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://samuel-sorial.hashnode.dev/sitemap-index.xml

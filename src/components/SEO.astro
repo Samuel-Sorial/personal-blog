@@ -1,0 +1,20 @@
+---
+interface Props { title?: string; description: string; canonical?: string; image?: string; type?: 'website' | 'article'; }
+const { title, description, canonical = Astro.url.href, image, type = 'website' } = Astro.props;
+const siteTitle = "Samuel Sorial's Blog";
+const fullTitle = title ? `${title} | ${siteTitle}` : siteTitle;
+const imageUrl = image ? new URL(image, Astro.site) : undefined;
+---
+<title>{fullTitle}</title>
+<meta name="description" content={description} />
+<link rel="canonical" href={canonical} />
+<meta property="og:type" content={type} />
+<meta property="og:title" content={fullTitle} />
+<meta property="og:description" content={description} />
+<meta property="og:url" content={canonical} />
+{imageUrl && <meta property="og:image" content={imageUrl} />}
+<meta name="twitter:card" content={imageUrl ? 'summary_large_image' : 'summary'} />
+<meta name="twitter:title" content={fullTitle} />
+<meta name="twitter:description" content={description} />
+{imageUrl && <meta name="twitter:image" content={imageUrl} />}
+<link rel="alternate" type="application/rss+xml" title={siteTitle} href="/rss.xml" />
