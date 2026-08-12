@@ -1,10 +1,10 @@
 ---
 title: "Thread Abstraction"
-description: "Introduction\nOur real-world run concurrently, which means that there are many things that happen at the same time. For example, you are reading this blog post while your friend is driving, or maybe he is just sleeping! The fact that you are doing som…"
+description: "An introduction to thread abstraction, concurrency, process address spaces, execution state, and why operating systems use threads."
 publishDate: 2020-12-30T01:48:25.000Z
 tags: ["multithreading","operating system","concurrency"]
 draft: false
-canonicalUrl: "https://samuelsorial.com/thread-abstraction"
+canonicalUrl: "https://samuelsorial.com/thread-abstraction/"
 ---
 <h3 id="heading-introduction">Introduction</h3>
 <p>Our real-world run concurrently, which means that there are many things that happen at the same time. For example, you are reading this blog post while your friend is driving, or maybe he is just sleeping! The fact that you are doing something shouldn't prevent another one from doing his own task.</p>

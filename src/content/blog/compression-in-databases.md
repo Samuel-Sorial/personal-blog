@@ -1,13 +1,13 @@
 ---
 title: "Compression In Databases"
-description: "Introduction\nIt's well-known that the database's main bottleneck lies in I/O. That's what makes database designers aim toward reducing it in any possible way, one of them is to look carefully at the workload and choose the suitable storage model (for…"
+description: "How database compression reduces I/O, including encoding techniques, execution tradeoffs, and the importance of preserving data fidelity."
 publishDate: 2022-10-17T20:21:24.000Z
 tags: ["Databases","database","compression"]
 draft: false
-canonicalUrl: "https://samuelsorial.com/compression-in-databases"
+canonicalUrl: "https://samuelsorial.com/compression-in-databases/"
 ---
 <h2 id="heading-introduction">Introduction</h2>
-<p>It's well-known that the database's main bottleneck lies in I/O. That's what makes database designers aim toward reducing it in any possible way, one of them is to look carefully at the workload and choose the suitable storage model (for more info <a target="_blank" href="https://samuelsorial.tech/storage-models-for-databases">Storage Models for Databases</a>). Another tool that is widely used in computer science, is to compress data before storing it and postpone decompression as long as we can (late materialization). However, DB <strong>should not lose</strong> any data in compression, which means that we get the same data that we inserted.</p>
+<p>It's well-known that the database's main bottleneck lies in I/O. That's what makes database designers aim toward reducing it in any possible way, one of them is to look carefully at the workload and choose the suitable storage model (for more info <a href="/storage-models-for-databases/">Storage Models for Databases</a>). Another tool that is widely used in computer science, is to compress data before storing it and postpone decompression as long as we can (late materialization). However, DB <strong>should not lose</strong> any data in compression, which means that we get the same data that we inserted.</p>
 <h2 id="heading-compression-granularity">Compression Granularity</h2>
 <ul>
 <li>Block-level: compress a whole block of tuples as a block, which uses a general-purpose algorithm, and it doesn't provide powerful compression (Zstd is most used).</li>

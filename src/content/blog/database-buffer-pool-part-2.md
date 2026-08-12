@@ -1,13 +1,13 @@
 ---
 title: "Database Buffer Pool - Part 2"
-description: "Introduction\nAs explained in Database Buffer Pool - Part 1, a buffer pool is a limited chunk of memory, which means that whenever we bring something from the disk, we need to evict something from the buffer pool and replace it. Buffer replacement is …"
+description: "A closer look at database buffer replacement policies, including LRU, clock algorithms, and workload-aware memory management."
 publishDate: 2022-10-27T21:00:42.000Z
 tags: ["database","caching","memory-management","LRU Cache","Databases"]
 draft: false
-canonicalUrl: "https://samuelsorial.com/database-buffer-pool-part-2"
+canonicalUrl: "https://samuelsorial.com/database-buffer-pool-part-2/"
 ---
 <h2 id="heading-introduction">Introduction</h2>
-<p>As explained in <a target="_blank" href="https://samuelsorial.tech/database-buffer-pool-part-1">Database Buffer Pool - Part 1</a>, a buffer pool is a limited chunk of memory, which means that whenever we bring something from the disk, we need to evict something from the buffer pool and replace it. Buffer replacement is one of the most important topics for memory management in DBMS.</p>
+<p>As explained in <a href="/database-buffer-pool-part-1/">Database Buffer Pool - Part 1</a>, a buffer pool is a limited chunk of memory, which means that whenever we bring something from the disk, we need to evict something from the buffer pool and replace it. Buffer replacement is one of the most important topics for memory management in DBMS.</p>
 <h2 id="heading-operating-system-page-cache">Operating-System Page Cache</h2>
 <p>Before digging into buffer pool replacement policies, we should know that there's another layer of caching, which is the OS page cache. When using OS API to do disk operations, the OS maintains its own filesystem cache, however, this cache can be bypassed. In our case, it's more common to bypass this cache, in order to avoid having a memory full of the same pages cached in different layers. Also, it allows the DBMS to manage its eviction policy, and improve its durability and recovery policy.</p>
 <p>It is worth knowing that in case of using a DBMS that's not using OS cache, it requires giving it more memory to have sufficient cache, however, if DBMS is using OS cache, it requires less memory, therefore OS can have memory to manage his cache (like PostgreSQL).</p>

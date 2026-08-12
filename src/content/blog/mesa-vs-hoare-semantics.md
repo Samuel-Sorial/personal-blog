@@ -1,10 +1,10 @@
 ---
 title: "Mesa VS Hoare semantics"
-description: "Introduction\nWhile designing multithreaded programs, we need to keep sure that our shared objects are synchronized between all of the running threads. Monitors are used to ensuring this synchronization. A monitor provides the programmer with the abil…"
+description: "A comparison of Mesa and Hoare monitor semantics, condition variables, and the synchronization guarantees each model provides."
 publishDate: 2021-01-13T01:04:05.000Z
 tags: ["operating system","concurrency","multithreading"]
 draft: false
-canonicalUrl: "https://samuelsorial.com/mesa-vs-hoare-semantics"
+canonicalUrl: "https://samuelsorial.com/mesa-vs-hoare-semantics/"
 ---
 <h3 id="heading-introduction">Introduction</h3>
 <p>While designing multithreaded programs, we need to keep sure that our shared objects are synchronized between all of the running threads. Monitors are used to ensuring this synchronization. A monitor provides the programmer with the ability to lock or wait for a lock to edit/view the shared data.</p>

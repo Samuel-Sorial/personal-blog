@@ -1,12 +1,12 @@
 ---
 title: "The Google File System - Case Study"
-description: "Introduction\nThe Google file system's main goal is to support their applications' workload. Which affected their design decisions, they implemented what they actually need, rather than the de-facto distributed file system.\nThere are 4 main different …"
+description: "A case study of Google File System architecture, including its master, chunkservers, consistency model, and fault-tolerance choices."
 publishDate: 2023-05-12T02:30:51.000Z
 tags: ["distributed system","Gfs","file system","General Programming"]
 draft: false
-canonicalUrl: "https://samuelsorial.com/the-google-file-system-case-study"
+canonicalUrl: "https://samuelsorial.com/the-google-file-system-case-study/"
 ---
-<h1 id="heading-introduction">Introduction</h1>
+<h2 id="heading-introduction">Introduction</h2>
 <p>The Google file system's main goal is to support their applications' workload. Which affected their design decisions, they implemented what they actually need, rather than the de-facto distributed file system.</p>
 <p>There are 4 main different decisions that they made in their design:</p>
 <ul>
@@ -20,7 +20,7 @@ canonicalUrl: "https://samuelsorial.com/the-google-file-system-case-study"
 </li>
 </ul>
 <p><em>Note: Google doesn't use</em> <strong><em>GFS</em></strong> <em>anymore, as they invented another file system that they are using in their cloud.</em></p>
-<h1 id="heading-design">Design</h1>
+<h2 id="heading-design">Design</h2>
 <h2 id="heading-assumptions">Assumptions</h2>
 <ul>
 <li><p>The system is running on many commodity machines, which means that they fail, so they must detect and handle failures correctly. They store huge files and sometimes small files, but it's optimized for bigger ones.</p>
@@ -64,7 +64,7 @@ canonicalUrl: "https://samuelsorial.com/the-google-file-system-case-study"
 </li>
 </ol>
 <p>GFS applications accommodate this relaxed model by implementing some techniques to keep sure it fits their needs such as using append instead of overwrite, checkpointing, and writing self-validating records with checksums inside it if needed. Record append is at-least-once, which means that it may duplicate data on some replicas, if it's not accepted in the application level, adding unique ids to regions appended can help applications to detect such duplications.</p>
-<h1 id="heading-system-interactions">System Interactions</h1>
+<h2 id="heading-system-interactions">System Interactions</h2>
 <h2 id="heading-leases-and-mutations">Leases and Mutations</h2>
 <p>For each chunk handle, the master chooses a server that is responsible for organizing data mutations on this chunk, it's called primary. It grants it a lease with expiration after 60 seconds, after that, it chooses another one or gives the primary additional time if it has requested that piggybacking heartbeat request. It's important to note that the primary knows the expiration of the lease, and it refuses any mutations after that expiry. So if the master is dead, and the client is already changing something, it will stop at the expiration. The master can then choose another primary when it comes back.</p>
 <p>Mutation steps:</p>
@@ -87,7 +87,7 @@ canonicalUrl: "https://samuelsorial.com/the-google-file-system-case-study"
 <p><img src="/images/posts/eac9d1cd-f41d-4aa0-91ba-15827da8e3b6.png" alt class="image--center mx-auto" /></p>
 <h2 id="heading-data-flow">Data flow</h2>
 <p>Decoupling data flow from control flow is an intelligent decision to maximize the utilization of the network. It starts by choosing the nearest node to push data into it, which starts pipelining data to other nodes from the first byte it receives, making the best usage of TCP connections. Later when data is fully received on all nodes, the client can start sending commands to specify what operations it needs to be done with this data.</p>
-<h1 id="heading-master-operations">Master Operations</h1>
+<h2 id="heading-master-operations">Master Operations</h2>
 <h2 id="heading-namespace-management">Namespace Management</h2>
 <p>In order to support snapshotting, the master needs to utilize locks to prevent having incorrect data. Hence, it's important to design lock granularity carefully to reduce the waiting time for such operations. For example, appending to a file requires taking read locks on all directory paths that contain this file, and a write on that specific one. By following this scheme, it allows different locks to be taken on files in the same directory. Also, it prevents deadlocks from happening as locks are taken in a consistent order, from top to bottom, and lexicographically ordered on the file level.</p>
 <h2 id="heading-replica-placement">Replica Placement</h2>
@@ -101,7 +101,7 @@ canonicalUrl: "https://samuelsorial.com/the-google-file-system-case-study"
 <p>chunk replicas can become stale if a chunkserver fails and misses updates to the chunk during its downtime. To manage this, the master maintains a chunk version number to differentiate between up-to-date and stale replicas.</p>
 <p>Whenever the master grants a new lease on a chunk, it increases the chunk's version number and notifies the up-to-date replicas. Both the master and these replicas record the new version number in their persistent state before any client is informed, hence before any writing to the chunk can commence. If a replica is unavailable at this time, its version number remains unchanged. The master identifies stale replicas when the chunkserver restarts and reports its chunk and version numbers. If the master notices a version number higher than its record, it assumes its previous attempt to grant the lease failed, and considers the higher version as up-to-date.</p>
 <p>The master removes stale replicas during its regular garbage collection, effectively treating them as non-existent when responding to client requests for chunk information. As an additional precaution, the master includes the chunk version number when informing clients about which chunkserver holds a lease on a chunk, or when it instructs a chunkserver to read the chunk from another chunkserver during a cloning operation. The client or chunkserver verifies this version number during operations, ensuring that it always accesses up-to-date data.</p>
-<h1 id="heading-references">References:</h1>
+<h2 id="heading-references">References:</h2>
 <p>This case study is created after careful reading of the GFS paper written by Google engineers, if you think there's anything wrong please contact me.</p>
 <ul>
 <li>Ghemawat, S., Gobioff, H., & Leung, S. T. (2003). The Google File System. In Proceedings of the nineteenth ACM symposium on Operating systems principles - SOSP '03 (pp. 29-43). ACM Press. <a target="_blank" href="https://doi.org/10.1145/945445.945450"><strong>https://doi.org/10.1145/945445.945450</strong></a></li>

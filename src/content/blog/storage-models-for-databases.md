@@ -1,13 +1,13 @@
 ---
 title: "Storage Models for Databases"
-description: "Introduction\nDifferent applications have different requirements, as discussed in What the heck is OLTP, OLAP?, it depends on business rules to define the workload of our database. Therefore, we need different storage models for the database in order …"
+description: "How row, column, and hybrid database storage models serve different OLTP and OLAP workloads and I/O access patterns."
 publishDate: 2022-10-16T00:00:32.000Z
 tags: ["Databases","database","database design","OLTP","OLAP"]
 draft: false
-canonicalUrl: "https://samuelsorial.com/storage-models-for-databases"
+canonicalUrl: "https://samuelsorial.com/storage-models-for-databases/"
 ---
 <h2 id="heading-introduction">Introduction</h2>
-<p>Different applications have different requirements, as discussed in <a target="_blank" href="https://samuelsorial.tech/what-the-heck-is-oltp-olap">What the heck is OLTP, OLAP?</a>, it depends on business rules to define the workload of our database. Therefore, we need different storage models for the database in order to fulfill those workloads while maximizing the utilization of I/O and storage.</p>
+<p>Different applications have different requirements, as discussed in <a href="/what-the-heck-is-oltp-olap/">What the heck is OLTP, OLAP?</a>, it depends on business rules to define the workload of our database. Therefore, we need different storage models for the database in order to fulfill those workloads while maximizing the utilization of I/O and storage.</p>
 <h2 id="heading-n-ary-storage-model-nsm">N-Ary Storage Model (NSM)</h2>
 <p>In this model, the database stores the attributes of a single record contiguously on a page (in some cases there might be overflow). Which makes it better for OLTP workloads, as it is easy to insert a new record, or modify an existing one. Also, retrieving the whole record is not a big deal in this case, because it's stored contiguously, retrieving the page results in having all attributes. This model is used in row-store databases.
 <img src="/images/posts/BtofA0vB2.png" alt="n-ary.png" /></p>

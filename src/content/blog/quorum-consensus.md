@@ -1,10 +1,10 @@
 ---
 title: "Quorum Consensus"
-description: "The Problem\nAccording to the CAP theorem, you can not achieve consistency, availability, and partition tolerance all at once. However, achieving strong consistency is desirable in many systems, but this strong consistency has a price that should be p…"
+description: "How quorum consensus balances consistency and availability in distributed systems through configurable read and write quorums."
 publishDate: 2021-03-06T15:00:26.000Z
 tags: ["operating system","distributed system"]
 draft: false
-canonicalUrl: "https://samuelsorial.com/quorum-consensus"
+canonicalUrl: "https://samuelsorial.com/quorum-consensus/"
 ---
 <h2 id="heading-the-problem">The Problem</h2>
 <p>According to the CAP theorem, you can not achieve consistency, availability, and partition tolerance all at once. However, achieving strong consistency is desirable in many systems, but this strong consistency has a price that should be paid.

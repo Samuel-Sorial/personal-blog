@@ -1,7 +1,21 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 ---
-<BaseLayout title="About" description="Samuel Sorial is a senior backend developer focused on distributed systems, databases, and system design.">
+<BaseLayout title="About" description="Samuel Sorial is a senior backend developer focused on distributed systems, databases, and system design." structuredData={{
+  '@context': 'https://schema.org',
+  '@type': 'ProfilePage',
+  mainEntity: {
+    '@type': 'Person',
+    '@id': 'https://samuelsorial.com/about/#samuel-sorial',
+    name: 'Samuel Sorial',
+    url: 'https://samuelsorial.com/about/',
+    jobTitle: 'Senior Backend Developer',
+    worksFor: { '@type': 'Organization', name: 'Cloud Imperium Games' },
+    description: 'Senior backend developer focused on distributed systems, databases, and system design.',
+    knowsAbout: ['Backend engineering', 'Distributed systems', 'Databases', 'System design', 'Node.js'],
+    sameAs: ['https://www.linkedin.com/in/samuel-sorial/'],
+  },
+}}>
   <article class="article shell about-shell">
     <header class="about-intro">
       <span class="section-kicker">About me</span>

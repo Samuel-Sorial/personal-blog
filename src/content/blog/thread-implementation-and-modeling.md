@@ -1,10 +1,10 @@
 ---
 title: "Thread Implementation & Modeling"
-description: "Threads Implementation\n\nKernel Threads\nKernel threads are the simplest type of threads. They are implemented in the operating system kernel itself. It's used to execute the kernel code concurrently.\n\n\nSingle-threaded processes with multiple kernel th…"
+description: "How operating systems implement and model kernel threads, user threads, and hybrid threading approaches, with their core tradeoffs."
 publishDate: 2020-12-31T01:41:40.000Z
 tags: ["multithreading","concurrency","operating system"]
 draft: false
-canonicalUrl: "https://samuelsorial.com/thread-implementation-and-modeling"
+canonicalUrl: "https://samuelsorial.com/thread-implementation-and-modeling/"
 ---
 <h2 id="heading-threads-implementation">Threads Implementation</h2>
 <ul>

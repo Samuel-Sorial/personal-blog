@@ -1,17 +1,17 @@
 ---
 title: "Query Optimization"
-description: "Introduction\nSQL is a declarative language, which means that when you request a query, you specify the data you want, but not how to get it. The database management system (DBMS) is responsible for determining the most efficient way to retrieve the r…"
+description: "How database optimizers transform declarative SQL into efficient plans using heuristics, cost models, and search strategies."
 publishDate: 2023-01-16T15:12:56.000Z
 tags: ["Databases","query tuning","query-optimization"]
 draft: false
-canonicalUrl: "https://samuelsorial.com/query-optimization"
+canonicalUrl: "https://samuelsorial.com/query-optimization/"
 ---
-<h1 id="heading-introduction">Introduction</h1>
+<h2 id="heading-introduction">Introduction</h2>
 <p>SQL is a declarative language, which means that when you request a query, you specify the data you want, but not how to get it. The database management system (DBMS) is responsible for determining the most efficient way to retrieve the requested data. This separation of concerns allows users to focus on what data they need, while the DBMS can optimize the underlying operations for efficiency and performance.</p>
 <p>There are two main approaches to optimizing a query: heuristics and cost-based search.</p>
 <p>Heuristics optimization involves using a set of pre-defined rules or patterns to determine the most efficient way to execute a query. These rules are based on common patterns and practices that are effective in many cases, but they may not always produce the most optimal plan.</p>
 <p>Cost-based optimization involves using statistical information about the data and the query itself to determine the most efficient execution plan. The DBMS estimates the costs of different potential execution plans and chooses the one with the lowest cost. This approach can be more accurate than heuristics optimization, but it can also be more time-consuming.</p>
-<h1 id="heading-heuristics-amp-rules">Heuristics & Rules</h1>
+<h2 id="heading-heuristics-amp-rules">Heuristics & Rules</h2>
 <p>During query optimization, the database management system (DBMS) will attempt to rewrite the original query provided by the user in a more efficient form. This may include removing unnecessary conditions and using the system catalog (a repository of information about the database's structure and contents) to identify more efficient ways to retrieve the requested data.</p>
 <p>The DBMS may also use techniques from relational algebra, a set of mathematical operations used to manipulate data stored in a relational database, to identify equivalent expressions that can be used to achieve the same result. This process allows the DBMS to identify multiple ways to execute the same query and choose the most efficient option.</p>
 <h3 id="heading-predicate-pushdown">Predicate Pushdown</h3>
@@ -59,7 +59,7 @@ canonicalUrl: "https://samuelsorial.com/query-optimization"
 <pre><code class="lang-sql"><span class="hljs-keyword">SELECT</span> * <span class="hljs-keyword">FROM</span> A
 <span class="hljs-keyword">WHERE</span> val <span class="hljs-keyword">BETWEEN</span> <span class="hljs-number">1</span> <span class="hljs-keyword">AND</span> <span class="hljs-number">150</span>;
 </code></pre>
-<h1 id="heading-cost-based-search">Cost-based Search</h1>
+<h2 id="heading-cost-based-search">Cost-based Search</h2>
 <p>In this model, DBMS uses actual data from the tables to determine which plan is better. Unlike the previous way, in which we use static rules. This one evaluates multiple query plans and chooses only the one that has the lowest cost.</p>
 <p>The main idea here is to store some statistics about each table, and its attributes (indexes also). And use those statistics to determine the best plan.</p>
 <h3 id="heading-statistics">Statistics</h3>
@@ -103,7 +103,7 @@ canonicalUrl: "https://samuelsorial.com/query-optimization"
 <li><p>Decompose nested queries and store results in a temporary table.</p>
 <p> <img src="/images/posts/11652973-e103-46d1-975d-5ed7d4817d53.png" alt class="image--center mx-auto" /></p>
 <p> <img src="/images/posts/76c7cfc7-7774-4df0-9503-d557ed09050a.png" alt class="image--center mx-auto" /></p>
-<h1 id="heading-references"><strong>References</strong></h1>
+<h2 id="heading-references"><strong>References</strong></h2>
 <ul>
 <li><p>CMU15-445/645 Database Systems lecture notes. Retrieved from: <a target="_blank" href="http://15445.courses.cs.cmu.edu/fall2019"><strong>15445.courses.cs.cmu.edu/fall2019</strong></a></p>
 <p>  Note: ChatGPT was used to help me refine and make this post more concise, and readable, and provided some examples. So huge thanks to <a target="_blank" href="https://openai.com/"><strong>OpenAI</strong></a>!</p>

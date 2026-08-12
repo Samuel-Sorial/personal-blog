@@ -1,15 +1,15 @@
 ---
 title: "Pessimistic Concurrency Control - 2PL"
-description: "Introduction\nIn today's high-traffic database management systems (DBMS), leveraging the full potential of hardware is essential. With the advent of modern CPUs, the opportunity for parallel processing has increased significantly. However, executing m…"
+description: "How pessimistic concurrency control and two-phase locking coordinate database transactions while preserving correctness."
 publishDate: 2023-02-08T13:22:51.000Z
 tags: ["concurrency","locking","Databases","two-phase-locking","concurrency-control"]
 draft: false
-canonicalUrl: "https://samuelsorial.com/pessimistic-concurrency-control-2pl"
+canonicalUrl: "https://samuelsorial.com/pessimistic-concurrency-control-2pl/"
 ---
-<h1 id="heading-introduction">Introduction</h1>
+<h2 id="heading-introduction">Introduction</h2>
 <p>In today's high-traffic database management systems (DBMS), leveraging the full potential of hardware is essential. With the advent of modern CPUs, the opportunity for parallel processing has increased significantly. However, executing multiple transactions simultaneously can result in data inconsistencies without proper concurrency control. This is why implementing effective concurrency control is crucial in ensuring the accuracy and reliability of data in a multi-user environment.</p>
 <p>A practical method for concurrency control in database management systems is to adopt a pessimistic approach. This approach assumes that conflicts will occur frequently when multiple transactions run simultaneously, and therefore requires transactions to obtain locks on shared data before accessing or modifying it. The system can ensure that data consistency and integrity are maintained, even in a high-traffic environment.</p>
-<h1 id="heading-two-phase-locking">Two-Phase Locking</h1>
+<h2 id="heading-two-phase-locking">Two-Phase Locking</h2>
 <h2 id="heading-why">Why?</h2>
 <p>Using locks doesn't guarantee the <a target="_blank" href="https://en.wikipedia.org/wiki/Serializability">serializability</a> of transactions, consider this example:</p>
 <pre><code class="lang-sql">T1             | T2
@@ -29,7 +29,7 @@ R(A)           |
 </code></pre>
 <p><em>Note:</em> X-LOCK() means exclusive lock, used for writes, and S-LOCK() means shared lock, used for reading without blocking other transactions reading at the same time.</p>
 <p>As we can see, using locks doesn't prevent T1 from reading a dirty value for A, as T2 didn't commit before the second R(A) in T1, so we exposed a value that wouldn't have been if we run in serializable order.</p>
-<p>Also, using locks in a random way can increase the chances of having a <a target="_blank" href="https://samuelsorial.tech/deadlock-prevention-and-necessary-conditions-to-occur">deadlock</a> in the system.</p>
+<p>Also, using locks in a random way can increase the chances of having a <a href="/deadlock-prevention-and-necessary-conditions-to-occur/">deadlock</a> in the system.</p>
 <h2 id="heading-how">How?</h2>
 <p>It's not surprising to know that Two-Phase locking is constructed by two phases:</p>
 <h3 id="heading-phase-1-growing">Phase 1: Growing</h3>
@@ -45,7 +45,7 @@ R(A)           |
 <p><img src="/images/posts/81e7d913-f2e1-47de-998b-8131aa746792.png" alt class="image--center mx-auto" /></p>
 <p>To solve this issue, we can use another variation of 2PL that requires releasing the locks only at the end of the transaction. This limits the concurrency for sure, but guarantees there are no dirty reads/ cascading aborts.</p>
 <p><img src="/images/posts/ddcf1661-946e-49f7-9016-6ac98477f45f.png" alt class="image--center mx-auto" /></p>
-<h1 id="heading-lock-hierarchy">Lock Hierarchy</h1>
+<h2 id="heading-lock-hierarchy">Lock Hierarchy</h2>
 <h2 id="heading-why-1">Why?</h2>
 <p>In the previous examples, we assumed that we are locking each tuple with a single lock, however, this is not efficient in real-world, because sometimes we want to lock the whole table.</p>
 <p>Assume we are running a transaction to update the whole bank accounts to get 10% interest each year, it would be like this:</p>
@@ -71,7 +71,7 @@ R(A)           |
 <p>Example:</p>
 <p><img src="/images/posts/151f4916-646c-4622-8df6-4680929e7c4d.png" alt class="image--center mx-auto" /></p>
 <p>It is worth noting that usually, it's the mission of the DBMS to maintain those locks, and in rare cases, the developer might need to use explicit locks on the transaction to give hints to the DB to improve performance.</p>
-<h1 id="heading-references"><strong>References</strong></h1>
+<h2 id="heading-references"><strong>References</strong></h2>
 <ul>
 <li><p>CMU15-445/645 Database Systems lecture notes. Retrieved from: <a target="_blank" href="http://15445.courses.cs.cmu.edu/fall2019"><strong>15445.courses.cs.cmu.edu/fall2019</strong></a></p>
 <p>  Note: ChatGPT was used to help me refine and make this post more concise, and readable, and provided some examples. So huge thanks to <a target="_blank" href="https://openai.com/"><strong>OpenAI</strong></a>!</p>

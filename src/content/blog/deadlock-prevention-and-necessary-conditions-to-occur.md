@@ -1,10 +1,10 @@
 ---
 title: "Deadlock prevention & necessary conditions to occur"
-description: "Deadlock is a state when a set of threads is waiting for an event that can only be raised by a thread(s) from the same set. There are many situations that developers think that it's a deadlock, and it is not. Sometimes it's a  livelock  or it's just …"
+description: "The necessary conditions for deadlock, how deadlocks differ from livelocks and starvation, and practical strategies for prevention."
 publishDate: 2021-01-25T04:34:24.000Z
 tags: ["operating system","multithreading"]
 draft: false
-canonicalUrl: "https://samuelsorial.com/deadlock-prevention-and-necessary-conditions-to-occur"
+canonicalUrl: "https://samuelsorial.com/deadlock-prevention-and-necessary-conditions-to-occur/"
 ---
 <p><strong>Deadlock </strong>is a state when a set of threads is waiting for an event that can only be raised by a thread(s) from the same set. There are many situations that developers think that it's a deadlock, and it is not. Sometimes it's a  <a target="_blank" href="https://en.wikibooks.org/wiki/Operating_System_Design/Concurrency/Livelock">livelock </a> or it's just starvation that has nothing to do with deadlocks at all. So, this article will discuss the necessary 4 conditions that must happen together to make a deadlock, and how we can utilize these conditions to prevent it!</p>
 <ol>

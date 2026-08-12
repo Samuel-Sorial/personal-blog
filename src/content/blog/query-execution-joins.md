@@ -1,14 +1,14 @@
 ---
 title: "Query Execution - Joins"
-description: "Introduction\nJoins are used to combine data from multiple tables in a database and retrieve the combined data as a single result set. This allows us to effectively retrieve data that is spread across multiple tables and can be especially useful when …"
+description: "A practical tour of database join execution, including nested-loop, block nested-loop, index, sort-merge, and hash joins."
 publishDate: 2022-12-29T14:29:50.000Z
 tags: ["Databases","query-execution","joins"]
 draft: false
-canonicalUrl: "https://samuelsorial.com/query-execution-joins"
+canonicalUrl: "https://samuelsorial.com/query-execution-joins/"
 ---
-<h1 id="heading-introduction">Introduction</h1>
+<h2 id="heading-introduction">Introduction</h2>
 <p>Joins are used to combine data from multiple tables in a database and retrieve the combined data as a single result set. This allows us to effectively retrieve data that is spread across multiple tables and can be especially useful when working with large datasets. In this article, we will discuss how DBMS executes those joins.</p>
-<h1 id="heading-join-operator-output">Join Operator Output</h1>
+<h2 id="heading-join-operator-output">Join Operator Output</h2>
 <p>In the given query, the planner noticed that a join is required, thus it inserted a join operator in the query plan. This operator gets its input from both tables R, S. However, its output can vary a lot depending on:</p>
 <ul>
 <li><p>Processing Model</p>
@@ -27,7 +27,7 @@ canonicalUrl: "https://samuelsorial.com/query-execution-joins"
 <p>In this type, the operator outputs only the RecordIds of the tuples that matched the join, and the next operators on the plan consume them and retrieve only attributes it needs on demand (late-materialization).</p>
 <p><img src="/images/posts/00d93d56-3291-4158-a5f9-30b99bccddd1.png" alt class="image--center mx-auto" /></p>
 <p>It's ideal for columnar databases because it doesn't fetch pages for attributes that won't be used later in the plan.</p>
-<h1 id="heading-join-operator-algorithms">Join Operator Algorithms</h1>
+<h2 id="heading-join-operator-algorithms">Join Operator Algorithms</h2>
 <p>Cost analysis terms used: we will use the R table, which has M pages stored on disk, and m records. S table with N pages on the disk, and n records.</p>
 <h2 id="heading-1-nested-loop-join">1- Nested Loop Join</h2>
 <h3 id="heading-simple-nested-loop-join">* Simple Nested Loop Join</h3>
@@ -65,7 +65,7 @@ canonicalUrl: "https://samuelsorial.com/query-execution-joins"
 <p>Cost: M + (m*C) where C is the cost of searching an index for a specific value, which depends on the implementation of the index.</p>
 <h2 id="heading-2-sort-merge-join">2- Sort-Merge Join</h2>
 <p>It's basically consisting of two phases:</p>
-<p>Phase 1: Sort both tables on the join keys, <a target="_blank" href="https://samuelsorial.tech/query-execution-aggregations#heading-sorting">sorting algorithm</a> can be determined based on whether it fits in memory or not.</p>
+<p>Phase 1: Sort both tables on the join keys, <a href="/query-execution-aggregations/#heading-sorting">sorting algorithm</a> can be determined based on whether it fits in memory or not.</p>
 <p>Phase 2: Merge by looping with two cursors, and emit matches only.</p>
 <pre><code class="lang-plaintext">sort R, S on join keys
 cursorR = firstSortedR, cursorS = firstSortedS
@@ -113,7 +113,7 @@ foreach tuple s in S:
 <p>Cost: 3 <em>(M+N) = 3</em> * (1000 + 500) = 4500 I/Os. Less than sort-merge.</p>
 <p>This cost can be reduced by using static hashing, if DB knows the size of the outer table before starting, which depends on the implementation of the DBMS.</p>
 <p>In general, hashing is almost better than sorting when it comes to joining operator, however, it might be worst if data is non-uniform, or we need to sort results before returning. Usually, DBMS use either of them depending on the query.</p>
-<h1 id="heading-references"><strong>References</strong></h1>
+<h2 id="heading-references"><strong>References</strong></h2>
 <ul>
 <li><p>CMU15-445/645 Database Systems lecture notes. Retrieved from: <a target="_blank" href="http://15445.courses.cs.cmu.edu/fall2019"><strong>15445.courses.cs.cmu.edu/fall2019</strong></a></p>
 <p>  Note: ChatGPT was used to help me refine and make this post more concise, and readable, and provided some examples. So huge thanks to <a target="_blank" href="https://openai.com/"><strong>OpenAI</strong></a>!</p>

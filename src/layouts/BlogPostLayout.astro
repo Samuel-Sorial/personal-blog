@@ -5,8 +5,23 @@ interface Props { post: CollectionEntry<'blog'>; }
 const { post } = Astro.props;
 const { title, description, publishDate, updatedDate, tags, heroImage, canonicalUrl } = post.data;
 const formatted = publishDate.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric', timeZone: 'UTC' });
+const canonical = canonicalUrl ?? new URL(`/${post.id}/`, Astro.site).href;
+const structuredData = {
+  '@context': 'https://schema.org',
+  '@type': 'BlogPosting',
+  headline: title,
+  description,
+  datePublished: publishDate.toISOString(),
+  ...(updatedDate && { dateModified: updatedDate.toISOString() }),
+  mainEntityOfPage: canonical,
+  url: canonical,
+  author: { '@type': 'Person', '@id': 'https://samuelsorial.com/about/#samuel-sorial', name: 'Samuel Sorial', url: 'https://samuelsorial.com/about/' },
+  publisher: { '@type': 'Person', '@id': 'https://samuelsorial.com/about/#samuel-sorial', name: 'Samuel Sorial' },
+  keywords: tags.join(', '),
+  ...(heroImage && { image: new URL(heroImage, Astro.site).href }),
+};
 ---
-<BaseLayout title={title} description={description} canonical={canonicalUrl} image={heroImage} type="article">
+<BaseLayout title={title} description={description} canonical={canonical} image={heroImage} type="article" structuredData={structuredData} publishDate={publishDate} updatedDate={updatedDate} tags={tags}>
   <article class="article shell article-shell">
     <header class="article-header">
       <h1>{title}</h1>

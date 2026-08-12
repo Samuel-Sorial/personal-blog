@@ -1,10 +1,10 @@
 ---
 title: "What the heck is OLTP, OLAP?"
-description: "What's OLTP?\nOLTP stands for Online Transaction Processing, in which a database is used to execute huge amounts of transactions. Transaction means to change data, either by inserting, updating, or deleting small amounts of data. It's usually used at …"
+description: "A clear comparison of OLTP and OLAP database workloads, including transaction patterns, analytical queries, and system design tradeoffs."
 publishDate: 2022-07-14T22:45:13.000Z
 tags: ["database","Databases","OLTP","OLAP"]
 draft: false
-canonicalUrl: "https://samuelsorial.com/what-the-heck-is-oltp-olap"
+canonicalUrl: "https://samuelsorial.com/what-the-heck-is-oltp-olap/"
 ---
 <h2 id="heading-whats-oltp">What's OLTP?</h2>
 <p>OLTP stands for Online Transaction Processing, in which a database is used to execute huge amounts of transactions. Transaction means to change data, either by inserting, updating, or deleting <strong>small amounts of data</strong>. It's usually used at the first stages of any application, it manipulates some data triggering some actions like selling products, banking, and messaging.</p>
