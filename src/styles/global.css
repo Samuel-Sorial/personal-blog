@@ -65,6 +65,7 @@ main { min-height: calc(100vh - 158px); }
 .page-header { padding: 5.5rem 0 2.5rem; border-bottom: 1px solid var(--line); margin-bottom: 1.5rem; }
 .page-header h1 { color: var(--heading); margin: 0; font-size: clamp(2.7rem, 6vw, 4.25rem); letter-spacing: -.055em; line-height: 1; }
 .page-header p { margin: .8rem 0 0; color: var(--muted); }
+.page-end { height: 6rem; }
 .article-shell { max-width: var(--article); }
 .article { padding: 5.5rem 0 7rem; }
 .article-header { margin-bottom: 3.5rem; padding-bottom: 2rem; border-bottom: 1px solid var(--line); }
